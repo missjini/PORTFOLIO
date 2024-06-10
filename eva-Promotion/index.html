@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" type="image/x-icon" href="images/logo.png">
+        <title>에바소파 기획전</title>
+
+        <!-- swiper -->
+        <link rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css'>
+
+        <!-- font-awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+        <!-- jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+        <style>
+            @font-face {
+                font-family: 'Pretendard-Regular';
+                src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+                font-weight: 400;
+                font-style: normal;
+            }
+
+            * {
+                padding: 0;
+                margin:0;
+                box-sizing: border-box;
+            }
+
+            body {
+                text-align: center;
+                overflow-x: hidden;
+                font-family: 'Pretendard-Regular';
+            }
+
+            .wrap {
+                min-width: 1600px;
+            }
+
+            .event_wrap {
+                max-width: 1920px;
+                position: relative;
+                margin: 0 auto;
+            }
+
+            .swiper {
+                width: 100%;
+                height: 100vh;
+                transform: translateY(0px);
+            }
+
+            .pc_slide {
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                
+                position: absolute;
+                top: 0;
+                left: 0px;
+                width: 100%; 
+                height: 100%;
+            }
+
+            .slide01 {
+                background-image:url(images/slide1.jpg);
+            }
+
+            .slide02 {
+                background-image:url(images/slide2.jpg);
+            }
+
+            .slide03 {
+                background-image:url(images/slide3.jpg);
+            }
+
+            .slide04 {
+                background-image:url(images/slide4.jpg);
+            }
+
+            /* 탭메뉴 */
+            #nav_tab {
+                position: sticky;
+                top: 0px;
+                background-color: #FFF;
+                z-index: 9999;
+            }
+
+            #nav_tab ul {
+                display:flex;
+                width:100%;
+                z-index:98;
+                margin: 0;
+            }
+
+            #nav_tab ul li a {
+                color:#111; 
+                text-decoration:none;
+                display:block;
+                width:100%;
+                height:80px;
+                line-height:80px;
+                font-size: 22px;
+                letter-spacing: -0.5px;
+                font-weight: bold;
+            }
+
+            #nav_tab ul li {
+                display:flex;
+                background:#FFF;
+                width:100%;
+                text-align:center;
+                border: 2px solid #111;
+                margin: 10px 5px 0px;
+            }
+
+            #nav_tab ul li:first-child {
+                margin: 10px 5px 0px 0px;
+            }
+
+            #nav_tab ul li:last-child {
+                margin: 10px 0px 0px 5px;
+            }
+
+            #nav_tab ul .on a{
+                background-color: #111;
+                color: #FFF;
+            }
+
+            .section-01 > .background-color-01 {
+                background-image: url(images/Fabric-background.jpg);
+                background-size: 100% 1605px;
+                background-repeat: no-repeat;
+                background-position: bottom;
+            } 
+           
+            .section-01 > .background-color-02 {
+                background-image: url(images/background-repeat.jpg);
+                background-repeat: repeat;
+                background-position: bottom;
+                padding-top: 217px;
+            }             
+
+            .section-01 > .product-list {
+                background-color: #f6f6f6;
+            }
+
+            .section-03 > .event-01 {
+                padding-bottom: 125px;
+                background-color: #2c314f;
+            }
+
+            .section-03 > .event-02 {
+                padding-bottom: 155px;
+                background-color: #f6f5f1;
+            }
+
+            .Fabric {
+                margin: 0 auto;
+                display: flex;
+                flex-grow: 1;
+                position: relative;
+                width: 1300px;
+                height: 800px;
+
+                border-radius: 50px;
+            }
+
+            .Natural {
+                margin: 0 auto;
+                display: flex;
+                flex-grow: 1;
+                position: relative;
+                width: 1300px;
+                height: 800px;
+
+                border-radius: 50px;
+            }
+
+            .swiper-slide {
+                opacity: 0 !important;
+                transition: 0.4s;
+            }
+            
+            .swiper-slide-active {
+                opacity: 1 !important;
+            }
+            
+            #banner1 {
+                background-image: url(images/banner1.jpg);
+            }
+            
+            #banner2 {
+                background-image: url(images/banner2.jpg);
+            }
+            
+            #banner3 {
+                background-image: url(images/banner3.jpg);
+            }
+
+            #banner4 {
+                background-image: url(images/banner4.jpg);
+            }
+                
+            #banner5 {
+                background-image: url(images/banner5.jpg);
+            }
+                
+            #banner6 {
+                background-image: url(images/banner6.jpg);
+            }
+
+            .main-title-1 {
+                position: absolute;
+                font-size: 100px;
+                font-weight: 400;
+                bottom: 35%;
+                left: 0px;
+                width: 100%;
+                line-height: 1em;
+                transition-delay: 0.3s;
+            }
+
+            .main-title-2 {
+                position: absolute;
+                font-size: 100px;
+                font-weight: 400;
+                bottom: 35%;
+                left: 0px;
+                width: 100%;
+                line-height: 1em;
+                transition-delay: 0.3s;
+            }
+
+            .main-title-3 {
+                position: absolute;
+                font-size: 100px;
+                font-weight: 400;
+                bottom: 35%;
+                left: 0px;
+                width: 100%;
+                line-height: 1em;
+                transition-delay: 0.3s;
+            }
+
+            .main-title-4 {
+                position: absolute;
+                font-size: 100px;
+                font-weight: 400;
+                bottom: 35%;
+                left: 0px;
+                width: 100%;
+                line-height: 1em;
+                transition-delay: 0.3s;
+            }
+
+            .swiper-slide .main-wrapper > *,
+            .swiper-slide .main-content > * {
+                transform: translateY(1000px);
+                opacity: 0;
+                transition-duration: 1s;
+            }
+            
+            .swiper-slide-active .main-wrapper > *,
+            .swiper-slide-active .main-content > * {
+                transform: none;
+                opacity: 1;
+            }
+
+            /* 유의사항 */
+            .btn {
+                margin: 20px 0 30px 0;
+            }
+
+            .btn a {
+                font-size: 24px;
+                font-weight: 400;
+            }
+
+            .event_wrap .btn { 
+                margin: 20px 0 30px 0;
+            }
+
+            .event_wrap .btn p {
+                font-size: 30px;
+                font-weight: 400;
+                letter-spacing: -1px;
+                padding-bottom:10px;
+            }
+
+            .event_wrap .btn a {
+                font-size: 24px;
+                font-weight: 400;
+                letter-spacing: -1px;
+                color: #FFF;
+                text-decoration: none;
+            }
+
+            .event_wrap .btn .opened {
+                display: none;
+            }
+
+            .event_wrap .btn .opened::after {
+                content: '';
+                display: inline-block;
+                width: 24px;
+                height: 13px;
+                background-image: url(images/arrow_icon_pc_wt.png);
+                margin: 0 0 2px 10px;
+                transform: rotate(180deg);
+            }
+
+            .event_wrap .btn.active .opened {
+                display: block;
+            }
+
+            .event_wrap .btn.active .closed {
+                display: none;
+            }
+
+            .event_wrap .btn .closed::after {
+                content: '';
+                display: inline-block;
+                width: 24px;
+                height: 13px;
+                background-image: url(images/arrow_icon_pc_wt.png);
+                margin: 0 0 2px 10px;
+            }
+
+            .event_wrap i {
+                font-size: 24px;
+                padding-right: 10px;
+            }
+
+            .event_wrap .notice_cnt {
+                display: none;
+                position: relative;
+            }
+
+            .gif-box-headrest {
+                background-color: #f1f1f1;
+                width: 1100px;
+                margin: 0 auto;
+                padding: 50px 0;
+            }
+        
+            .gif-box-elbow {
+                background-color: #81635f;
+                width: 1100px;
+                margin: 0 auto;
+                padding: 50px 0;
+            }            
+        </style>        
+    </head>
+
+    <body>
+
+        <div class="wrap">
+            <div class="event_wrap">
+            
+                <div class="swiper mySwiper pc_mode">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <div class="pc_slide slide01"></div>
+                            </a>
+                            <div class="main-wrapper">
+                                <h1 class="main-title-1"><img src="images/title1.png" alt="" /></h1>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <div class="pc_slide slide02"></div>                            
+                            </a>
+                            <div class="main-wrapper">
+                                <h1 class="main-title-2"><img src="images/title2.png" alt="" /></h1>
+                            </div>                                              
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <div class="pc_slide slide03"></div>
+                            </a>
+                            <div class="main-wrapper">
+                                <h1 class="main-title-3"><img src="images/title3.png" alt="" /></h1>
+                            </div>                                               
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <div class="pc_slide slide04"></div>
+                            </a>
+                            <div class="main-wrapper">
+                                <h1 class="main-title-4"><img src="images/title4.png" alt="" /></h1>
+                            </div>                                                
+                        </div>
+                    </div>       
+                </div>
+
+                <div id="nav_tab">
+                    <ul class="list">
+                        <li class="m"><a href="#tab1" class="menu-01">이달의 특가</a></li>
+                        <li class="m"><a href="#tab2" class="menu-02">ABOUT 에바</a></li>
+                        <li class="m"><a href="#tab3" class="menu-03">구매 사은품</a></li>           
+                    </ul>
+                </div>
+
+                <!-- section-01 slide -->
+                <div class="section-01 scroll">
+                    <div class="background-color-01">        
+                        <div class="title" style="padding-top: 100px;">
+                            <img src="images/main-title.jpg" alt="" />
+                        </div>                      
+                        <div class="swiper mySwiper Fabric">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" id="banner1">
+
+                                </div>
+
+                                <div class="swiper-slide" id="banner2">
+
+                                </div>
+
+                                <div class="swiper-slide" id="banner3">
+
+                                </div>
+                            </div>
+                        </div>    
+                        <div>
+                            <img src="images/Fabric-Review.png" />
+                        </div>
+                    </div>  
+                    <div class="product-list">
+                        <img src="images/Fabric-Product.png" alt="" usemap="#product1" />
+                        <map id="product1" name="product1">
+                            <area shape="rect" coords="199,1140,747,1226" href="https://www.dauning.com/goods/goods_view.php?goodsNo=1000000652" target="_blank" alt="" />
+                            <area shape="rect" coords="856,1140,1404,1226" href="https://www.dauning.com/goods/goods_view.php?goodsNo=1000000651" target="_blank" alt="" />
+                        </map>    
+                    </div>
+                    <div class="background-color-02">
+                        <div class="swiper mySwiper Natural">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide" id="banner4">
+    
+                                </div>
+    
+                                <div class="swiper-slide" id="banner5">
+    
+                                </div>
+    
+                                <div class="swiper-slide" id="banner6">
+    
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="images/Natural-Review.png" alt="" />
+                        </div>                                              
+                    </div>
+                    <div class="product-list">
+                        <img src="images/Natural-product.png" usemap="#product2" alt="" />
+                        <map id="product2" name="product2">
+                            <area shape="rect" coords="199,1140,747,1226" href="https://www.dauning.com/goods/goods_view.php?goodsNo=1000000650" target="_blank" alt="">
+                            <area shape="rect" coords="856,1140,1404,1226" href="https://www.dauning.com/goods/goods_view.php?goodsNo=1000000649" target="_blank" alt="">
+                        </map>    
+                    </div>                     
+                </div> 
+
+                <!-- section-02 slide -->
+                <div class="section-02 scroll">                                  
+                    <img src="images/about-images.jpg" alt="" />
+                    <img src="images/check-point1.jpg" alt="" />
+                    <div class="gif-box-headrest">
+                        <img src="images/pc-headrest.jpg" alt="" />
+                    </div>
+                    <img src="images/check-title1.jpg" alt="" />
+                    <img src="images/check-images1.jpg" alt="" />
+                    <img src="images/line.png" alt="" />
+                    <img src="images/check-point2.jpg" alt="" />
+                    <div class="gif-box-elbow">
+                        <img src="images/pc-elbow-rest.jpg" alt="" />
+                    </div>
+                    <img src="images/check-title2.jpg" alt="" /> 
+                    <img src="images/check-images2.jpg" alt="" />
+                    <img src="images/check-title3.jpg" alt="" />
+                    <img src="images/line.png" alt="" />
+                    <img src="images/check-point3.jpg" alt="" />
+                    <img src="images/check-images3.jpg" alt="" />
+                    <img src="images/check-images4.jpg" alt="" />
+                    <img src="images/check-title4.jpg" alt="" />
+                    <img src="images/line.png" alt="" />
+                    <img src="images/check-point4.jpg" alt="" />
+                    <img src="images/name1.jpg" alt="" />
+                    <img src="images/check-title5.jpg" alt="" />
+                    <img src="images/check-images5.jpg" alt="" />
+                    <img src="images/check-title6.jpg" alt="" />
+                    <img src="images/color1.jpg" alt="" />
+                    <img src="images/standard.jpg" alt="" />
+                    <img src="images/name2.jpg" />
+                    <img src="images/check-title7.jpg" alt="" />
+                    <img src="images/check-images6.jpg" alt="" />
+                    <img src="images/check-title8.jpg" alt="" />
+                    <img src="images/color2.jpg" alt="" />
+                </div>
+                
+                <!-- section-03 slide -->
+                <div class="section-03 scroll">
+                    <div class="event-01">
+                        <img src="images/event1.png" alt="" />
+                        <div class="btn">
+                            <a href="javascript:void(0)">
+                                <span class="closed"><i class="fa-solid fa-circle-exclamation"></i>사은품 이벤트 유의사항</span>
+                                <span class="opened"><i class="fa-solid fa-circle-exclamation"></i>사은품 이벤트 유의사항</span>
+                            </a>
+                        </div>
+                        <div class="notice_cnt">
+                            <img src="images/notice1.png" alt="">
+                        </div>
+                    </div>  
+                    <div class="event-02">
+                        <img src="images/event2.png" alt="" usemap="#event2" />
+                        <map id="event2" name="event2">
+                            <area shape="rect" coords="616,1513,983,1546" href="https://www.dauning.com/board/review_event" target="_blank" alt="">
+                        </map>                        
+                    </div>                               
+                </div>
+                <!-- notice -->
+                <script>
+                    $('.section-03 .btn').on('click',function(){
+                        $(this).next().slideToggle();
+                        $(this).toggleClass('active');
+                    });            
+                </script>
+            </div>
+        </div>
+
+        <!-- partial -->
+        <script src='https://unpkg.com/swiper/swiper-bundle.min.js'></script>
+        <script>
+            /* Swiper Slider */
+            const swiper1 = new Swiper('.pc_mode', {
+                direction: 'vertical',
+                speed : 1000,
+                effect : 'fade',
+                mousewheel : true,
+                on: {
+                    slideChangeTransitionEnd() {
+                        var isLastSlide = swiper1.slides.length === (swiper1.activeIndex + 1 ); // 마지막 슬라이드인지 체크
+                        console.log(swiper1.activeIndex);
+                            
+                        if(isLastSlide){ // 마지막 슬라이드면
+                            // html 추가하는 코드 작성
+                            swiper1.mousewheel.disable();
+                            
+                        } else {
+                            window.scrollTo({
+                                top: 0,
+                                left: 0,
+                                speed : 0,
+                                behavior: "smooth",
+                            });
+                        }
+                    },
+                },
+            });
+
+            window.addEventListener('wheel', function (event) {
+                if (event.deltaY < 0) {
+                    swiper1.mousewheel.enable();
+                } else if (event.deltaY > 0) {
+                    
+                }
+            });
+
+            /* section-01 slide */
+            const swiper2 = new Swiper('.Fabric', {
+                effect: "fade",
+                loop: "infinite",
+                speed : 2000,
+                autoplay : true,
+            });
+
+            /* section-01 slide */
+            const swiper3 = new Swiper('.Natural', {
+                effect: "fade",
+                loop: "infinite",
+                speed : 2000,
+                autoplay : true,
+            });
+
+            /* TabMenu Scroll */
+            (function (global, $) {
+
+                var $menu     = $('#nav_tab li.m'),
+                    $contents = $('.scroll'),
+                    $doc      = $('html, body');
+                $(function () {
+                    // 해당 섹션으로 스크롤 이동
+                    $menu.on('click','a', function(e){
+                        var $target = $(this).parent(),
+                            idx     = $target.index(),
+                            section = $contents.eq(idx),
+                            offsetTop = section.offset().top;
+                        $doc.stop()
+                                .animate({
+                                    scrollTop :offsetTop
+                                }, 800);
+                        return false;
+                    });
+                });
+
+                // menu class 추가
+                $(window).scroll(function(){
+                    var scltop = $(window).scrollTop();
+                    $.each($contents, function(idx, item){
+                        var $target   = $contents.eq(idx),
+                            i         = $target.index(),
+                            targetTop = $target.offset().top;
+
+                        if (targetTop <= scltop) {
+                            $menu.removeClass('on');
+                            $menu.eq(idx).addClass('on');
+                        }
+                        if (!(200 <= scltop)) {
+                            $menu.removeClass('on');
+                        }
+                    })
+
+                });
+
+            }(window, window.jQuery));
+        </script>
+        
+    </body>
+
+</html>
