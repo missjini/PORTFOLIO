@@ -562,3 +562,64 @@ footer .cnt_inner { position:relative; display:table-cell; vertical-align:middle
       width: 100%;
     }
   }
+
+  .tooltip {
+    position: relative;
+    display: block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;       /* 이벤트가 없으면 툴팁 영역을 숨김 */
+    width: 280px;             /* 툴팁 영역의 넓이를 설정 */
+    background-color: #2e2e2e;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size:16px;
+    position: absolute;       /* 절대 위치를 사용 */
+    z-index: 1;
+    opacity: 0.9;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    border-style: solid;
+    border-width: 5px;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;      /* hover 이벤트 발생시 영역을 보여줌 */
+  }
+  
+  
+  .tooltip .tooltip-right {
+    top: 15px;
+    left: 105%;
+  }
+
+  .tooltip .tooltip-right::after {
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-color: transparent black transparent transparent;
+  }
+
+  /* 위쪽 툴팁 시작 */
+
+.tooltip .tooltip-top {
+  width: 330px;
+  bottom: 101%;
+  left: 50%;
+  padding: 20px;
+  margin-left: -158px;
+  z-index: 9999;
+}
+
+.tooltip .tooltip-top::after {
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-color: black transparent transparent transparent;
+}
