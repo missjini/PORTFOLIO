@@ -66,6 +66,7 @@
 .pub .table_list {
     display: flex;
     align-items: flex-start;
+    justify-content: space-around;
 }
 
 .pub .table_list table+table {
